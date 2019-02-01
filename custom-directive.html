@@ -1,0 +1,36 @@
+<html>
+	<body ng-app="myApp" ng-controller="myCtrl">
+		<my-app-dir obj="message1"></my-app-dir>
+		<br/><br/>
+		<my-app-dir obj="message2"></my-app-dir>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script>
+			angular.module("myApp",[])
+			.directive("myAppDir",function($compile){
+				return {
+					restrict : "EA",
+					template : "{{myObj.key}} AM {{myObj.value}}<br/>THIS IS MY CUSTOM DIRECTIVE<BR/><BR/>",
+					scope : {
+						myObj : "=obj"
+					},
+					link : function(scope, ele, attr){
+						//alert("this is called");
+						ele.append("I AM DOING GOOD");
+						//$compile(ele)(scope);
+						//scope.$apply();
+					}
+				};
+			})
+			.controller("myCtrl",function($scope){
+				$scope.message1 = {
+					key : "I",
+					value : "Trainer At NIT"
+				};
+				$scope.message2 = {
+					key : "I",
+					value : "Student At NIT"
+				};
+			});
+		</script>
+	</body>
+</html>

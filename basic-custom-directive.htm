@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>first angular app</title>
+	</head>
+	<body ng-app="myApp">
+		<div ng-controller="myCont">
+			<!--<div my-app-dir obj='message'></div>-->
+			<my-app-dir obj="message">
+				<div></div>
+			</my-app-dir>
+		</div>
+	</body>
+	<script src="../lib/angular-1.3.14/angular.min.js"></script>
+	<script>
+		var myApp = angular.module('myApp', []);
+		myApp.controller("myCont",
+				["$scope",function($scope){
+			$scope.message = {
+				key: "i",
+				value: "Trainer AT NIT"
+			};
+		}])
+
+		.directive("myAppDir",function($compile){
+			function mylink(scope, element, attr){
+				//alert("this is link");
+				var el = angular.element('<label/>');
+				el.append("<br/>I AM APPENDING DYNAMICALLY: {{myDirInfo}}");
+				$compile(el)(scope);
+				element.append(el);
+			}
+			return{
+				restrict: 'E',
+				templateUrl: 'my-dir.htm',
+				//template:"{{message.key}} am {{message.value}}"
+				
+				//template: "I USED MY-TEXT AS ELEMENT"
+				scope: {
+					myDirInfo: '=obj'
+				},
+				link: mylink
+			};
+		});
+	</script>
+</html>
