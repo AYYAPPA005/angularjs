@@ -1,0 +1,67 @@
+<html>
+	<body ng-app="myApp">
+		<div align="center">
+			<a ng-href="#/view/about.pl/nit">
+				ABOUT US
+			</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a ng-href="#/view/login.pl">
+				LOGIN PAGE
+			</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a ng-href="#/view/registration.pl">
+				REGISTRATION PAGE
+			</a>
+		</div>
+		<div ng-view></div>
+		<script type="text/ng-template" 
+			id="view/registration.pl">
+			THIS IS JAVASCRIPT INLINE CONTENT LOADED AS A template
+			<br/>
+			{{message}}
+		</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+		<script>
+			var app = angular.module('myApp', 
+				["ngRoute"]);
+			app.config(['$routeProvider',
+				function($routeProvider) {
+				$routeProvider
+				.when("/view/about.pl/:key",{
+					controller:"aboutCtrl",
+					template:"<b ng-bind='message'></b>"
+				})
+				.when("/view/login.pl",{
+					controller: "loginCtrl",
+					templateUrl: "view/login.pl"
+				})
+				.when("/view/registration.pl",{
+					controller: "registrationCtrl",
+					templateUrl: "view/registration.pl"
+				})
+				.otherwise({
+					redirectTo: "/view/about.pl"
+				})
+			}]);
+			app.controller("aboutCtrl",
+				function($scope,$routeParams){
+				$scope.message=$routeParams.key;
+			});
+			app.controller("loginCtrl",
+				function($scope,$location){
+				$scope.message="CONTROLLER LOGIN FORM";
+				$scope.user={
+					id:"",
+					pwd:""
+				};
+				$scope.submit = function(){
+					alert("USER AUTHENTICATED");
+					$location.path("/view/about.pl/"+$scope.user.id);
+				};
+			});
+			app.controller("registrationCtrl",
+				function($scope){
+				$scope.message="CONTROLLER REGISTRATION FORM";
+			});
+		</script>
+	</body>
+</html>
