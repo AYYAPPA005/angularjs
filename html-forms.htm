@@ -1,0 +1,27 @@
+<html ng-app>
+	<body>
+		<form name="myform" novalidate>
+			ENTER EMAIL ID : <input type="email" name="mail" ng-model="user.mail" required/>
+			<div ng-show="myform.mail.$dirty && myform.mail.$invalid" style="color:red;">
+				<div ng-show="myform.mail.$error.required">
+					EMAIL ID IS MANDATORY
+				</div>
+				<div ng-show="myform.mail.$error.email">
+					PLEASE ENTER VALID EMAIL ID
+				</div>
+			</div>
+			<br/>
+			ENTER MOBILE NO : <input type="number" name="no" ng-model="user.no" required/>
+			<div ng-show="myform.no.$dirty && myform.no.$invalid" style="color:red;">
+				<div ng-show="myform.no.$error.required">
+					MOBILE NO IS MANDATORY
+				</div>
+				<div ng-show="myform.no.$error.number">
+					PLEASE ENTER VALID MOBILE NO
+				</div>
+			</div>
+			<button ng-click="submit()" ng-disabled="myform.mail.$invalid || myform.no.$invalid">SUBMIT</button>
+		</form>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+	</body>
+</html>
