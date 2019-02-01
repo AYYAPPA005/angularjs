@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+  
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+   
+<!-- ng route -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>-->
+  
+   <!-- angular ui router -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.22/angular-ui-router.min.js"></script>
+  
+  <!--app.js-->
+  <script  src="app.js"></script>
+  <link rel"stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+ 
+
+
+
+
+
+</head>
+<body ng-app="app">
+  <div ui-view></div>
+
+  <script type="text/ng-template" id="./templates/main.html">
+    <div ui-view="nav"></div>
+    <h1 class="text-center">This content is in main.html</h1>
+    <div ui-view="body"></div>
+    <div ui-view="footer"></div>
+  </script>
+
+  <script type="text/ng-template" id="./templates/body.html">
+    <div class="container">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2>This is the content from body.html</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h2 class="text-center">This is the content from body.html</h2>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h2 class="text-center">This is the content from body.html</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+  <script type="text/ng-template" id="./templates/assets/nav.html">
+    <nav class="navbar navbar-default navbar-inverse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#">Link 1</a>
+        </li>
+        <li><a href="#">Link 2</a></li>
+        <li>
+          <a href="#">Link 3</a>
+        </li>
+        <li>
+          <a href="#">Link 4</a>
+        </li>
+      </ul>
+    </nav>
+  </script>
+
+  <script type="text/ng-template" id="./templates/assets/footer.html">
+    <div class="footer">
+      <p class="lead text-center">This is the footer section..</p>
+    </div>
+  </script>
+</body>
+
+</html>
+
+<style>
+body {
+  background-color: #800000;
+}
+h1:nth-of-type(1) {
+  color: white;
+}
+.footer {
+  background-color: #000;
+  padding-top: 15px;
+  height: 50px;
+  color: white;
+}
+.panel-primary > .panel-body {
+  color: #337ab7;
+  font-weight: 600;
+}
+.panel-success {
+  border-width: 4px;
+  border-color: #3c763d;
+  color: #3c763d;
+  font-weight: 600;
+}
+.navbar-nav {
+  margin:0;
+}
+.navbar-nav > li {
+  float:none;
+  display:inline-block;
+}
+.navbar-nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.navbar-nav {
+  margin:0;
+}
+.navbar-nav > li {
+  float:none;
+  display:inline-block;
+}
+.navbar-nav > li > a {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+</style>
+
