@@ -1,0 +1,21 @@
+<h3>{{message}}</h3>
+
+<table class="table table-hover 
+		table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Cost</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="book in books">
+            <td>{{ book.name }}</td>
+            <td>{{ book.price | currency}}</td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+
