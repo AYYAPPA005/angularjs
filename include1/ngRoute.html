@@ -1,0 +1,68 @@
+<html>
+	<body ng-app="myApp" ng-controller="mainCtrl">
+		<div align="center">
+			<a ng-href="#/about">
+				ABOUT US
+			</a> |
+			<a ng-href="#/login">
+				LOGIN
+			</a> |
+			<a ng-href="#/">
+				REGISTRATION
+			</a>
+		</div>
+		<hr/>
+		<div id="about" align="center" ng-view></div>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script src="../lib/angular-1.3.14/angular-route.min.js"></script>
+		<script>
+			angular.module("myApp",["ngRoute"])
+			.config(function($routeProvider){
+				$routeProvider
+				.when("/about",{
+					template  : "THIS IS ABOUT US TEMPLATE"
+				})
+				.when("/login/:uid/:pwd",{
+					templateUrl  : "view/login.pl",
+					controller : "loginCtrl"
+				})
+				.when("/",{
+					templateUrl  : "view/registration.pl",
+					controller : "regCtrl"
+				})
+				.when("/404",{
+					template  : "THE PAGE YOU ARE SEARCHING IS NOT AVAILABLE...!"
+				})
+				.otherwise({
+					redirectTo : "/404"
+				})
+			})
+			.controller("mainCtrl",function($scope){
+				$scope.page = {
+					url : "view/registration.pl"
+				};
+				$scope.spa = function(url){
+					$scope.page = url;
+				};
+			})
+			.controller("regCtrl",function($scope, $location){
+				$scope.reg = {
+					uid : "",
+					pwd : ""
+				};
+				$scope.submit = function(){
+					$location.path("/login/"+$scope.reg.uid+"/"+$scope.reg.pwd);
+				};
+			})
+			.controller("loginCtrl",function($scope, $location, $routeParams){
+				$scope.user = {
+					uid : $routeParams.uid,
+					pwd : $routeParams.pwd
+				};
+				$scope.submit = function(){
+					$location.path("/about");
+				};
+			});
+		</script>
+	</body>
+</html>

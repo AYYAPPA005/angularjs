@@ -1,0 +1,66 @@
+<html>
+	<body ng-app="uiApp">
+		<!-- root links -->
+		<div align="center">
+			<a href="#" ui-sref="about">
+				ABOUT US
+			</a> |
+			<a href="#" ui-sref="dashboard">
+				DASHBOARD
+			</a>
+		</div>
+		<hr/>
+		<!-- parent contrainer -->
+		<div ui-view></div>
+		<script src="../lib/angular-1.3.14/angular.min.js"></script>
+		<script src="../lib/angular-ui-router.min.js"></script>
+		<script>
+			angular.module("uiApp",["ui.router"])
+			.config(function($stateProvider){
+				$stateProvider
+				.state("about",{
+					url : "/about",
+					templateUrl : "view/aboutLinks.html"
+				})
+				.state("about.md",{
+					url : "/md",
+					template : "THIS IS MANAGING DIRECTOR PORTFOLIO"
+				})
+				.state("about.fd",{
+					url : "/fd",
+					template : "THIS IS FINANCE DIRECTOR PORTFOLIO"
+				})
+				.state("about.sd",{
+					url : "/sd",
+					template : "THIS IS SALES DIRECTOR PORTFOLIO"
+				})
+				.state("dashboard",{
+					url : "/dashboard",
+					views : {
+						"" : {
+							templateUrl : "view/dashboard.htm"
+						},
+						"scm@dashboard" : {
+							template : "THIS IS SCM REPORT"
+						},
+						"crm@dashboard" : {
+							template : "THIS IS CRM REPORT"
+						},
+						"sales@dashboard" : {
+							template : "THIS IS SALES REPORT"
+						},
+						"orders@dashboard" : {
+							template : "THIS IS ORDERS REPORT"
+						},
+						"accounts@dashboard" : {
+							template : "THIS IS ACCOUNTS REPORT"
+						},
+						"leaves@dashboard" : {
+							template : "THIS IS LEAVES REPORT"
+						}
+					}					
+				})
+			});
+		</script>
+	</body>
+</html>
