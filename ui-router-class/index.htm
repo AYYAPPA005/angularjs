@@ -1,0 +1,31 @@
+<html ng-app="myApp">
+	<head>
+		<title>
+			ANGULAR JS TRAINING METERIAL FOR ADP
+		</title>
+		<link rel="stylesheet" type="text/css" href="css/layout.css"/>
+		<link rel="stylesheet" type="text/css" href="css/div-table.css"/>
+	</head>
+	<body style="margin:0px;">
+		<div id="header">
+			<div align="center" style="color:#fff;">
+				<a ng-href="#" 
+						ng-click="url='views/about.pl'">
+					ABOUT US
+				</a> | 
+				<a ng-href="#" 
+						ng-click="url='views/service.pl'">
+					SERVICE
+				</a> | 
+				<a ng-href="#" 
+						ng-click="url='views/contact.pl'">
+					CONTACT US
+				</a>
+			</div>
+		</div>
+		<div ng-include="url"></div>
+		<script src="../lib/angular-1.3.14/angular.js"></script>
+		<script src="../lib/angular-1.3.14/angular-route.js"></script>
+		<script src="js/myApp.js"></script>
+	</body>
+</html>
